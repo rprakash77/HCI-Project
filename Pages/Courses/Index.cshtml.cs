@@ -20,6 +20,7 @@ namespace HCI_Project.Pages.Courses
         }
 
         public IList<Section> Section { get;set; } = default!;
+        public IList<Takeableclass> Class { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -27,6 +28,10 @@ namespace HCI_Project.Pages.Courses
             {
                 Section = await _context.Sections
                 .Include(s => s.Class).ToListAsync();
+            }
+            if (_context.Takeableclasses != null)
+            {
+                Class = await _context.Takeableclasses.ToListAsync();
             }
         }
     }

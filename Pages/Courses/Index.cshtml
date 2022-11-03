@@ -2,7 +2,7 @@
 @model HCI_Project.Pages.Courses.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Courses";
 }
 
 <h1>Index</h1>
@@ -51,7 +51,11 @@
                 @Html.DisplayFor(modelItem => item.Typeofclass)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Class.Classid)
+                @foreach(var item1 in Model.Class) {
+                    @if (item1.Classid == item.Classid) {
+                        @Html.DisplayFor(modelItem => item1.Classname)
+                    }
+                }
             </td>
             <td>
                 <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
