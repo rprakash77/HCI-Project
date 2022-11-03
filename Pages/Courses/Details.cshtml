@@ -1,0 +1,55 @@
+﻿@page
+@model HCI_Project.Pages.Courses.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Section</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Prof)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Prof)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Days)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Days)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Timeslot)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Timeslot)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Locations)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Locations)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Typeofclass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Typeofclass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Class)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Class.Classid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Section?.Crn">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

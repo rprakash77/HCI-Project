@@ -1,0 +1,66 @@
+﻿@page
+@model HCI_Project.Pages.Courses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Prof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Timeslot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Locations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Typeofclass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section[0].Class)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Section) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prof)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Days)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timeslot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locations)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typeofclass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.Classid)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Crn">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Crn">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Crn">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
