@@ -7,16 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-void ConfigureServices(IServiceCollection services)
-{
-    string[] lines = File.ReadAllLines(@"C:\Users\Public\Documents\registration.txt");
-    string connString = string.Format("Host={0};Username={1};Database=registration", lines[0], lines[1]);
-    var builder = new NpgsqlConnectionStringBuilder(connString)
-    {
-        Password = lines[2]
-    };
-    services.AddDbContext<registrationContext>(options => options.UseNpgsql(builder.ConnectionString));
-}
+string[] lines = File.ReadAllLines(@"C:\Users\Public\Documents\registration.txt");
+string connString = string.Format("Host={0};Username={1};Database=registration; Password={2}", lines[0], lines[1], lines[2]);
+builder.Services.AddDbContext<registrationContext>(options => options.UseNpgsql(connString));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
