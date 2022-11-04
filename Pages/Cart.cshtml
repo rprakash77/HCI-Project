@@ -1,0 +1,15 @@
+﻿@page
+@model HCI_Project.Pages.CartModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>Shopping Cart</h1>
+@foreach (var item in Model.cart) {
+           <td>
+                   
+                            @Html.DisplayFor(modelItem => item.Crn)
+            </td>
+}
+
+

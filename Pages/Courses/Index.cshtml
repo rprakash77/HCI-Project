@@ -88,7 +88,7 @@
                 <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
             </td>
             <td>
-                    <a asp-action="s">Add to Cart</a>
+               <a asp-page="../Cart" asp-page-handler="BuyNow" asp-route-id="@item.Crn"><img alt="cart" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" height="30"></a>
             </td>
         </tr>
 }

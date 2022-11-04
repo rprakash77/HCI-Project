@@ -7,10 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
 string[] lines = File.ReadAllLines(@"C:\Users\Public\Documents\registration.txt");
 string connString = string.Format("Host={0};Username={1};Database=registration; Password={2}", lines[0], lines[1], lines[2]);
 builder.Services.AddDbContext<registrationContext>(options => options.UseNpgsql(connString));
-var app = builder.Build();
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -28,6 +29,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapRazorPages();
 
