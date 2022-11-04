@@ -42,10 +42,22 @@
             @Html.DisplayFor(model => model.Section.Typeofclass)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Section.Class)
+            @Html.DisplayNameFor(model => model.Section.Class.Prefix)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Section.Class.Classid)
+            @Html.DisplayFor(model => model.Section.Class.Prefix)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Class.Code)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Class.Code)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Section.Class.Classname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section.Class.Classname)
         </dd>
     </dl>
 </div>

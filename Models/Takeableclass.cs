@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HCI_Project.Models
 {
@@ -11,6 +12,7 @@ namespace HCI_Project.Models
         }
 
         public int Classid { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G0}")]
         public decimal? Code { get; set; }
         public string Prefix { get; set; }
         public string Classname { get; set; }

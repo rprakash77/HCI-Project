@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using HCI_Project;
 using HCI_Project.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HCI_Project.Pages.Courses
 {
@@ -21,7 +22,11 @@ namespace HCI_Project.Pages.Courses
 
         public IList<Section> Section { get;set; } = default!;
         public IList<Takeableclass> Class { get; set; } = default!;
-
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        public SelectList? Genres { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? MovieGenre { get; set; }
         public async Task OnGetAsync()
         {
             if (_context.Sections != null)

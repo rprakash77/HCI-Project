@@ -18,17 +18,17 @@ namespace HCI_Project.Pages.Courses
         {
             _context = context;
         }
-
-      public Section Section { get; set; }
-
+        public Section Section { get; set; }
+ 
+ 
         public async Task<IActionResult> OnGetAsync(decimal? id)
         {
             if (id == null || _context.Sections == null)
             {
                 return NotFound();
             }
-
             var section = await _context.Sections.FirstOrDefaultAsync(m => m.Crn == id);
+        
             if (section == null)
             {
                 return NotFound();
@@ -36,6 +36,9 @@ namespace HCI_Project.Pages.Courses
             else 
             {
                 Section = section;
+                var takeableclass = await _context.Takeableclasses.FirstOrDefaultAsync(m => m.Classid == Section.Classid);
+                Section.Class = takeableclass;
+
             }
             return Page();
         }
