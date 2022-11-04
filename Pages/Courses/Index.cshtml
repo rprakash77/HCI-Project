@@ -11,8 +11,10 @@
 <table class="table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.Section[0].Prof)
+                @Html.DisplayNameFor(model => model.Section[0].Class)
+          
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Section[0].Days)
@@ -27,7 +29,8 @@
                 @Html.DisplayNameFor(model => model.Section[0].Typeofclass)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Section[0].Class)
+            
+                @Html.DisplayNameFor(model => model.Section[0].Prof)
             </th>
             <th></th>
         </tr>
@@ -36,7 +39,13 @@
 @foreach (var item in Model.Section) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Prof)
+                    @foreach (var item1 in Model.Class)
+                    {
+                        @if (item1.Classid == item.Classid)
+                        {
+                            @Html.DisplayFor(modelItem => item1.Classname)
+                        }
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Days)
@@ -51,11 +60,8 @@
                 @Html.DisplayFor(modelItem => item.Typeofclass)
             </td>
             <td>
-                @foreach(var item1 in Model.Class) {
-                    @if (item1.Classid == item.Classid) {
-                        @Html.DisplayFor(modelItem => item1.Classname)
-                    }
-                }
+                    @Html.DisplayFor(modelItem => item.Prof)
+               
             </td>
             <td>
                 <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
