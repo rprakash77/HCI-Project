@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HCI_Project.Models
 {
@@ -11,6 +14,7 @@ namespace HCI_Project.Models
         public string Days { get; set; }
         public string Timeslot { get; set; }
         public string Locations { get; set; }
+        [Display(Name="Type of Class")]
         public string Typeofclass { get; set; }
 
         public virtual Takeableclass Class { get; set; }
