@@ -9,7 +9,15 @@ using HCI_Project;
 using HCI_Project.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.AccessControl;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
+public static class Extension
+{
+    public static bool Contains(this string source, string toCheck, StringComparison comp)
+    {
+        return source != null && toCheck != null && source.IndexOf(toCheck, comp) >= 0;
+    }
+}
 namespace HCI_Project.Pages.Courses
 {
     public class IndexModel : PageModel
@@ -20,6 +28,7 @@ namespace HCI_Project.Pages.Courses
         {
             _context = context;
         }
+
 
         public IList<Section> Section { get;set; } = default!;
         public IList<Takeableclass> Class { get; set; } = default!;
@@ -35,7 +44,7 @@ namespace HCI_Project.Pages.Courses
                            select m;
             if (!string.IsNullOrEmpty(SearchString))
             {
-                classes = classes.Where(s => s.Classname.Contains(SearchString));
+                classes = classes.Where(x => x.Classname.ToLower().Contains(SearchString.ToLower()));
             }
             if (!string.IsNullOrEmpty(CRN.ToString()))
             {

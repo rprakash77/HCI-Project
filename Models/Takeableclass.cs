@@ -11,7 +11,6 @@ namespace HCI_Project.Models
         {
             Sections = new HashSet<Section>();
         }
-
         public int Classid { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G0}")]
         public decimal? Code { get; set; }
