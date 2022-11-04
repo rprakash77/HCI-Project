@@ -5,11 +5,16 @@
 }
 
 <h1>Shopping Cart</h1>
-@foreach (var item in Model.cart) {
-           <td>
-                   
-                            @Html.DisplayFor(modelItem => item.Crn)
-            </td>
+@if(Model.cart != null) {
+    @foreach (var item in Model.cart)
+    {
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Crn)
+        </td>
+    }
 }
+
+
 
 
