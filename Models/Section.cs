@@ -10,6 +10,7 @@ namespace HCI_Project.Models
     {
         public decimal Crn { get; set; }
         public int? Classid { get; set; }
+        [Display(Name = "Professor")]
         public string Prof { get; set; }
         public string Days { get; set; }
         public string Timeslot { get; set; }

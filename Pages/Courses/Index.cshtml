@@ -2,19 +2,19 @@
 @model HCI_Project.Pages.Courses.IndexModel
 
 @{
-    ViewData["Title"] = "Courses";
+    ViewData["Title"] = "Course Selection";
 }
 
-<h1>Index</h1>
+<h1>Course Selection</h1>
 
 <form method="post">
-    <label for="Class">Class Search:</label><br />
+    <label for="Class">Search by Class Name:</label><br />
     <input type="text" id="Class" name="Class" />
     <input type="submit" value="Search" /><br />
 </form>
 
 <form method="post">
-    <label for="CourseID">Course ID Search:</label><br />
+    <label for="CourseID">Search by Course ID:</label><br />
     <input type="text" id="CourseID" asp-for="SearchString" name="CourseID" />
     <input type="submit" value="Search" /><br />
 </form>

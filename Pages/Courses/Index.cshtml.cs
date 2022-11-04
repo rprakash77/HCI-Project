@@ -31,8 +31,7 @@ namespace HCI_Project.Pages.Courses
         {
             if (_context.Sections != null)
             {
-                Section = await _context.Sections
-                .Include(s => s.Class).ToListAsync();
+                Section = await _context.Sections.Include(s => s.Class).ToListAsync();
             }
             if (_context.Takeableclasses != null)
             {
