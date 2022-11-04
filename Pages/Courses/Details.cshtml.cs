@@ -38,7 +38,6 @@ namespace HCI_Project.Pages.Courses
                 Section = section;
                 var takeableclass = await _context.Takeableclasses.FirstOrDefaultAsync(m => m.Classid == Section.Classid);
                 Section.Class = takeableclass;
-
             }
             return Page();
         }

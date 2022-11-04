@@ -7,15 +7,15 @@
 
 <h1>Course Selection</h1>
 
-<form method="post">
+<form>
     <label for="Class">Search by Class Name:</label><br />
-    <input type="text" id="Class" name="Class" />
+    <input type="text"asp-for="SearchString" />
     <input type="submit" value="Search" /><br />
 </form>
 
-<form method="post">
+<form>
     <label for="CourseID">Search by Course ID:</label><br />
-    <input type="text" id="CourseID" asp-for="SearchString" name="CourseID" />
+    <input type="text" asp-for="CRN" />
     <input type="submit" value="Search" /><br />
 </form>
 
@@ -48,7 +48,17 @@
     </thead>
     <tbody>
 @foreach (var item in Model.Section) {
-        <tr>
+            int i = 0;
+            @foreach (var item1 in Model.Class) {
+              if (item1.Classid == item.Classid) {
+                    i++;
+                    break;
+                }  
+            }
+            if (i == 0) {
+                continue;
+            }
+            <tr>
             <td>
                     @foreach (var item1 in Model.Class)
                     {
@@ -76,6 +86,9 @@
             </td>
             <td>
                 <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
+            </td>
+            <td>
+                    <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
             </td>
         </tr>
 }
