@@ -43,7 +43,16 @@
     <div class="course-container">
 
     </div>
+
+    <div class="event-container">
+        <div class="slot slot-1">
+            <div class="event-status"></div>
+            <span>Event A</span>
+        </div>
+    </div>
 </div>
+
+
 
 <style>
     li {
@@ -85,7 +94,7 @@
         justify-content: left;
     }
 
-    .timeslots-container{
+    .timeslots{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -98,13 +107,35 @@
     .timeslots li::after {
         content: "";
         position: absolute;
-        left: 300px;
-        width: 50%;
+        align-content: center;
+        width: 1258px;
         height: 1px;
-        background: black;
+        background: rgb(202, 210, 216);
         r-index: 1;
     }
- 
 
+    .slot {
+        position: absolute;
+        background: blue;
+        border-radius: 5px;
+        z-index: 5;
+        color: white;
+        font-size: 12px;
+    }
+
+    .event-container {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(36, 1fr);
+        grid-area: main;
+        position: relative;
+    }
+ 
+    .slot-1 {
+        height: 75px;
+        grid-row: 5;
+        grid-column: 7;
+    }
 
 </style>
+
