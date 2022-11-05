@@ -30,14 +30,15 @@
                 Professor
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @if (Model.cart != null)
         {
-            <tr>
                 @foreach (var item in Model.cart)
                 {
+                <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Crn)
                     </td>
@@ -68,13 +69,13 @@
 
                     </td>
                     <td>
-                        <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
+                        <a asp-page="./Courses/Details" asp-route-id="@item.Crn">Details</a>
                     </td>
                     <td>
-                        <a asp-page="../Cart" asp-page-handler="BuyNow" asp-route-id="@item.Crn"><img alt="cart" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" height="30"></a>
+                        <a asp-page="./Cart" asp-page-handler="Delete" asp-route-id="@item.Crn">Remove from Cart</a>
                     </td>
+                </tr>
                 }
-            </tr>
        }
     </tbody>
 </table>
