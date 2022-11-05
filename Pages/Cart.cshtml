@@ -5,11 +5,79 @@
 }
 
 <h1>Shopping Cart</h1>
-@foreach (var item in Model.cart) {
-           <td>
-                   
-                            @Html.DisplayFor(modelItem => item.Crn)
-            </td>
-}
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                CRN
+            </th>
+            <th>
+                Class
+            </th>
+            <th>
+               Days
+            </th>
+            <th>
+                Timeslot
+            </th>
+            <th>
+               Locations
+            </th>
+            <th>
+              Type of Class
+            </th>
+            <th>
+                Professor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.cart != null)
+        {
+            <tr>
+                @foreach (var item in Model.cart)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Crn)
+                    </td>
+
+                    <td>
+                        @foreach (var item1 in Model.takeableclasses)
+                        {
+                            @if (item1.Classid == item.Classid)
+                            {
+                                @Html.DisplayFor(modelItem => item1.Classname)
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Timeslot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Locations)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Typeofclass)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prof)
+
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.Crn">Details</a>
+                    </td>
+                    <td>
+                        <a asp-page="../Cart" asp-page-handler="BuyNow" asp-route-id="@item.Crn"><img alt="cart" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" height="30"></a>
+                    </td>
+                }
+            </tr>
+       }
+    </tbody>
+</table>
+
 
 

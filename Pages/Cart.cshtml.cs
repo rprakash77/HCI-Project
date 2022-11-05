@@ -10,15 +10,17 @@ namespace HCI_Project.Pages
     public class CartModel : PageModel
     {
         public List<Section> cart { get; set; }
+        public List<Takeableclass> takeableclasses { get; set; }
         private readonly HCI_Project.registrationContext _context;
         public CartModel(HCI_Project.registrationContext context)
         {
             _context = context;
         }
-
-        public void OnGet()
+        public async void OnGet()
         {
             cart = SessionHelper.GetObjectFromJson<List<Section>>(HttpContext.Session, "cart");
+            var classes = from m in _context.Takeableclasses select m;
+            takeableclasses = await classes.ToListAsync();
         }
 
         public async Task<IActionResult> OnGetBuyNow(decimal id)
@@ -43,7 +45,7 @@ namespace HCI_Project.Pages
             {
                 return RedirectToPage("Details");
             }
-      
+
             if (section == null)
             {
                 return RedirectToPage("Courses");
@@ -71,6 +73,20 @@ namespace HCI_Project.Pages
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
+            return RedirectToPage("Cart");
+        }
+        public IActionResult OnGetDelete(decimal id)
+        {
+            cart = SessionHelper.GetObjectFromJson<List<Section>>(HttpContext.Session, "cart");
+            foreach (var item in cart)
+            {
+                if (item.Crn == id)
+                {
+                    cart.Remove(item);
+                    break;
+                }
+            }
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToPage("Cart");
         }
     }
