@@ -5,6 +5,11 @@
 }
 
 <h1>Shopping Cart</h1>
+<style>
+    button:hover{
+        background-color: #009374;
+    }
+</style>
 <table class="table">
     <thead>
         <tr>
@@ -66,7 +71,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Prof)
-
                     </td>
                     <td>
                         <a asp-page="./Courses/Details" asp-route-id="@item.Crn">Details</a>
@@ -79,6 +83,6 @@
        }
     </tbody>
 </table>
-
+<a style="float:right; border:2px;" asp-page="./Calendar/Index"><button style="margin-top:0">Go to calendar and register</button></a>
 
 
