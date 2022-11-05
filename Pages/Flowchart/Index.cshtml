@@ -1,0 +1,718 @@
+﻿@page
+@model HCI_Project.Pages.Flowchart.IndexModel
+@{
+}
+
+
+<h1>
+    CSE Degree Flowchart
+</h1>
+
+<style>
+    
+    
+    div{
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    ProgramDesign {
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        border-radius: 16px;
+        top: 445px;
+        left: 331px;
+        width: 100px;
+    }
+
+    CompOrg{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        border-radius: 16px;
+        top: 357px;
+        left: 331px;
+        width: 100px;
+        
+    }
+    Calc3{
+    
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        border-radius: 16px;
+        top: 260px;
+        left: 331px;
+        width: 100px;
+    
+    }
+
+    Calc1{
+    
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 260px;
+        left: 62px;
+        width: 100px;
+    
+    }
+
+    Calc2{
+    
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 260px;
+        left: 197px;
+        width: 100px;
+    
+    }
+
+    ProgramCon{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 356px;
+        left: 197px;
+        width: 100px;
+
+    }
+
+
+    DataStructures{
+
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 356px;
+        left: 480px;
+        width: 100px;
+    }
+
+    CLD{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 266px;
+        left: 480px;
+        width: 100px;
+    
+    }
+    
+    
+    CLDL{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 175px;
+        left: 480px;
+        width: 100px;
+
+    }
+
+    DiscreteStructure{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 505px;
+        left: 480px;
+        width: 100px;
+    }
+
+    PHY1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 170px;
+        left: 197px;
+        width: 100px;
+    }
+
+    PHYL1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 80px;
+        left: 197px;
+        width: 100px;
+    }
+
+    PHY2{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+
+        top: 170px;
+        left: 331px;
+        width: 100px;
+
+    }
+
+    PHYL2{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 80px;
+        left: 331px;
+        width: 100px;
+
+    }
+
+    NSE1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 170px;
+        left: 62px;
+        width: 100px;
+    }
+
+    FOE{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 483px;
+        left: 62px;
+        width: 100px;
+    }
+
+    Comp1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 585px;
+        left: 62px;
+        width: 100px;
+    }
+
+    ENGFund{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 360px;
+        left: 61px;
+        width: 100px;
+
+    }
+
+    SSE{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 655px;
+        left: 600px;
+        width: 100px;
+    }
+
+    Comp2{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+       
+        top: 585px;
+        left: 197px;
+        width: 100px;
+
+    }
+
+    CompArch{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 266px;
+        left: 727px;
+        width: 100px;
+
+    }
+
+    CompArchL{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+      
+        top: 347px;
+        left: 727px;
+        width: 100px;
+    }
+
+    CSE1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+      
+        top: 162px;
+        left: 727px;
+        width: 100px;
+
+    }
+
+    CSE2 {
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 162px;
+        left: 860px;
+        width: 100px;
+
+    }
+
+    CSE3{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 162px;
+        left: 987px;
+        width: 100px;
+    }
+
+    CSE4 {
+        position: absolute;
+        padding: 16px;
+        background-color: red;
+        top: 162px;
+        left: 1123px;
+        width: 100px;
+    }
+
+    CSE5 {
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+       
+        top: 252px;
+        left: 988px;
+        width: 100px;
+
+    }
+
+    NSE2{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        
+        top: 565px;
+        left: 600px;
+        width: 100px;
+
+
+    }
+
+    Communications{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 565px;
+        left: 861px;
+        width: 100px;
+
+    }
+
+    LinearSystems{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 73px;
+        left: 727px;
+        width: 100px;
+    }
+
+    Human{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 640px;
+        left: 727px;
+        width: 100px;
+    }
+    
+
+    Gen1{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 655px;
+        left: 861px;
+        width: 100px;
+    }
+
+    Gen2{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 655px;
+        left: 987px;
+        width: 100px;
+    }
+
+    Gen3{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 655px;
+        left: 1122px;
+        width: 100px;
+
+    }
+
+    ProbNStat{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 64px;
+        left: 600px;
+        width: 100px;
+
+
+    }
+
+    CSE6{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        border-radius: 16px;
+        top: 251px;
+        left: 861px;
+        width: 100px;
+
+
+    }
+
+    Algo{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 444px;
+        left: 861px;
+        width: 100px;
+
+    }    
+    
+    CSE7{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        border-radius: 16px;
+        top: 490px;
+        left: 727px;
+        width: 100px;
+    }
+
+    Humanities{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 655px;
+        left: 466px;
+        width: 100px;
+
+    }
+
+    SecureCoding{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 342px;
+        left: 987px;
+        width: 100px;
+
+    }
+
+    OperatingSystems{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 460px;
+        left: 987px;
+        width: 100px;
+
+    }
+
+    Software{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 340px;
+        left: 1122px;
+        width: 100px;
+
+    }
+
+    Ethics{
+        position: absolute;
+        padding: 16px;
+        background-color: green;
+        top: 460px;
+        left: 1122px;
+        width: 100px;
+    }
+    .btn1{
+
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: green;
+        opacity: 0.5;
+        height: 95px;
+        width: 92px;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
+    .btn {
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: green;
+        opacity: 0.5;
+        height: 60px;
+        width: 90px;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn2{
+        
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: red;
+        opacity: 0.5;
+        height: 60px;
+        width: 90px;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    
+    }
+
+    .btn3 {
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: green;
+        opacity: 0.5;
+        height: 77px;
+        width: 90px;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+    position: relative;
+	width: 100%;
+  }
+
+    
+
+</style>
+
+
+<div class="container ">
+    <img src="https://drive.google.com/uc?export=view&id=16Hpr_HxTwHTllhXmJ5s6EH0DhBckQT-B" alt="flowchart" class="center">
+    
+        <ProgramDesign class ='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Program+Design';">
+            
+        </ProgramDesign>
+
+       <CompOrg class ='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Computer+Organization';">
+
+       </CompOrg>
+
+       <Calc3 class ='btn' onclick="">
+      
+       </Calc3>
+
+       <Calc1 class ='btn' onclick="">
+      
+       </Calc1>
+
+       <Calc2 class ='btn' onclick="">
+      
+       </Calc2>
+
+
+       <ProgramCon class ='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Programming+Concepts';">
+      
+       </ProgramCon>
+
+       <DataStructures class ='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Data+Structures';">
+      
+       </DataStructures>
+
+
+       <DiscreteStructure class ='btn' onclick="">
+      
+       </DiscreteStructure>
+
+       <CLD class ='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Computer+Logic+and+Design';">
+      
+       </CLD>
+
+       <CLDL class ='btn' onclick="">
+      
+       </CLDL>
+
+       <PHY1 class='btn' onclick="">
+
+        </PHY1>
+
+       <PHYL1 class='btn' onclick="">
+
+       </PHYL1>
+
+       <PHY2 class='btn' onclick="">
+
+       </PHY2>
+
+       <PHYL2 class='btn' onclick="">
+
+       </PHYL2>
+
+       <NSE1 class='btn' onclick="">
+
+       </NSE1>
+
+       <FOE class='btn' onclick="">
+           
+       </FOE>
+
+       <Comp1 class='btn' onclick="">
+
+       </Comp1>
+    
+       <Comp2 class='btn' onclick="">
+
+       </Comp2>
+
+
+       <ENGFund class='btn1' onclick="">
+
+       </ENGFund>
+
+       <CompArch class='btn' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Computer+Architecture';">
+
+       </CompArch>
+
+       <CompArchL class='btn' onclick="">
+
+       </CompArchL>
+       
+       <CSE1 class='btn' onclick="">
+
+       </CSE1>
+
+       <CSE2 class='btn' onclick="">
+
+       </CSE2>
+       
+       <CSE3 class='btn2' onclick="">
+
+       </CSE3>
+    
+       <CSE4 class='btn2' onclick="">
+
+       </CSE4>
+
+       <CSE5 class='btn' onclick="">
+
+       </CSE5>
+
+       <CSE6 class='btn' onclick="">
+
+       </CSE6>
+
+       <CSE7 class='btn' onclick="">
+
+       </CSE7>
+
+       <NSE2 class='btn' onclick="">
+
+       </NSE2>
+
+       <LinearSystems class='btn' onclick="">
+
+       </LinearSystems>
+
+       <Human class='btn3' onclick="">
+
+       </Human>
+
+       <SecureCoding class='btn2' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Secure+Coding';">
+
+       </SecureCoding>
+
+       <OperatingSystems class='btn2' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Operating+Systems';">
+
+       </OperatingSystems>
+
+
+       <Algo class='btn' onclick="">
+
+       </Algo>
+
+       <Software class='btn2' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Software+Engineering';">
+
+       </Software>
+
+       <Ethics class='btn2' onclick="window.location.href='https://localhost:7078/Courses?SearchString=Ethical+Issues+and+Professional+Conduct';">
+
+       </Ethics>
+
+
+       <SSE class='btn' onclick="">
+
+       </SSE>
+
+       <Gen1 class='btn' onclick="">
+
+       </Gen1>
+
+       <Gen2 class='btn' onclick="">
+
+       </Gen2>
+
+       <Gen3 class='btn' onclick="">
+
+       </Gen3>
+
+       <Communications class='btn' onclick="">
+
+       </Communications>
+
+       <ProbNStat class='btn3' onclick="">
+
+       </ProbNStat>
+
+       <Humanities class='btn' onclick="">
+
+       </Humanities>
+
+
+
+       
+    
+</div>
+
+
