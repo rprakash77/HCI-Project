@@ -1,5 +1,5 @@
 ﻿@page
-@model HCI_Project.Pages.Index1Model
+@model HCI_Project.Pages.Calendar.IndexModel
 @{
 }
 
@@ -41,15 +41,187 @@
     </div>
 
     <div class="course-container">
-
     </div>
+    @if (Model.cart != null) {
+        @foreach (var item in Model.cart)
+        {
+            for (int i = 0; i < item.Days.Length; i++) {
+                int slot = 0;
+                double time = 0;
+                bool conflict = false;
+                bool sameday = false;
+                string dayandtime = item.Days[i] + item.Timeslot;
+                bool conflictslot = false;
+                bool onehourclass = true;
+                if (item.Timeslot == "06:30 pm-09:15 pm" || item.Timeslot == "11:00 am - 1:45 pm") {
+                    onehourclass = false;;
+                }
+                @foreach (var item1 in Model.cart)
+                {
+                    if (item1.Crn == item.Crn){
+                        continue;
+                    }
+                      for (int j = 0; j < item1.Days.Length; j++)
+                        {
+                            if (item1.Days[j] == item.Days[i])
+                            {
+                                sameday = true;
+                            }
+                        }
+                    @if (item.Timeslot == item1.Timeslot && sameday)
+                    {
+                        conflict = true;
+                    }
+                }
+                @switch (item.Days[i]) {
+                    case 'M':
+                        slot = 1;
+                        break;
+                    case 'T':
+                        slot = 2;
+                        break;
+                    case 'W':
+                        slot = 3;
+                        break;
+                    case 'R':
+                        slot = 4;
+                        break;
+                    case 'F':
+                        slot = 5;
+                        break;
+                }
+                @switch (item.Timeslot)
+                {
+                    case "09:30 am-10:45 am":
+                        time = 5;
+                        break;
+                    case "11:00 am-12:15 pm":
+                        time = 8;
+                        break;
+                    case "11:00 am - 1:45 pm":
+                        time = 8;
+                        break;
+                    case "12:30 pm-01:45 pm":
+                        time = 12;
+                        break;
+                    case "02:00 pm-03:15 pm":
+                        time = 15;
+                        break;
+                    case "03:30 pm-04:45 pm":
+                        time = 19;
+                        break;
+                    case "05:00 pm-06:15 pm":
+                        time = 22;
+                        break;
+                    case "06:30 pm-09:15 pm":
+                        time = 25;
+                        break;
+                  
+                }
+                if (Model.conflictslots != null)
+                {
+                    foreach (var slot1 in Model.conflictslots)
+                    {
+                        if (slot1 == dayandtime)
+                        {
+                            conflictslot = true;
+                        }
+                    }
+                }
+                if (onehourclass) {
+                    @if (!conflict) {
+                        <div class="event-container">
+                            <div class="slot slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                }   
+                            </div>
+                        </div>
+                    }
+                    else if (!conflictslot){
+                        Model.conflictslots.Add(dayandtime);
+                        <div class="event-container">
+                            <div class="conflictslot slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                } 
+                            </div>
+                        </div>
+                    }
+                    else {
+                        <div class="event-container">
+                            <div class="conflictslot2 slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                }
+                            </div>
+                        </div>
 
-    <div class="event-container">
-        <div class="slot slot-1">
-            <div class="event-status"></div>
-            <span>Computer Architecture</span>
-        </div>
-    </div>
+                    }
+                }
+                else {
+                     @if (!conflict) {
+                        <div class="event-container">
+                            <div class="bigslot slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                }   
+                            </div>
+                        </div>
+                    }
+                    else if (!conflictslot){
+                        Model.conflictslots.Add(dayandtime);
+                        <div class="event-container">
+                            <div class="bigconflictslot slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                    else {
+                        <div class="event-container">
+                            <div class="bigconflictslot2 slot-@slot" style="grid-row:@time">
+                                <div class="event-status"></div>
+                                @foreach (var takeableclass in Model.takeableclasses)
+                                {
+                                    @if (takeableclass.Classid == item.Classid)
+                                    {
+                                        <span>@Html.DisplayFor(Modelitem => takeableclass.Classname)</span>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        }
+    }
 </div>
 
 
@@ -59,7 +231,7 @@
         list-style: none;
     }
 
-    u1{
+    u1 {
         margin: 0;
         padding: 0;
     }
@@ -74,45 +246,45 @@
             "timeslots-container main";
     }
 
-    .weekdays{
+    .weekdays {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
     }
 
-    .weekdays{
+    .weekdays {
         background: rgb(202, 210, 216);
     }
 
-    .header{
+    .header {
         background: white;
         grid-area: header;
     }
 
-    .timeslots-container{
+    .timeslots-container {
         background: rgb(202, 210, 216);
         grid-area: timeslots-container;
         justify-content: left;
     }
 
-    .timeslots{
+    .timeslots {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .timeslots li{
-        min-height: 60px;
-    }
+        .timeslots li {
+            min-height: 60px;
+        }
 
-    .timeslots li::after {
-        content: "";
-        position: absolute;
-        align-content: center;
-        width: 1258px;
-        height: 1px;
-        background: rgb(202, 210, 216);
-        r-index: 1;
-    }
+            .timeslots li::after {
+                content: "";
+                position: absolute;
+                align-content: center;
+                width: 1258px;
+                height: 1px;
+                background: rgb(202, 210, 216);
+                r-index: 1;
+            }
 
     .slot {
         position: absolute;
@@ -121,8 +293,70 @@
         z-index: 5;
         color: white;
         font-size: 12px;
+        height: 75px;
+        width: 100px;
     }
 
+    .bigslot {
+        position: absolute;
+        background: blue;
+        border-radius: 5px;
+        z-index: 5;
+        color: white;
+        font-size: 12px;
+        height: 175px;
+        width: 100px;
+    }
+    .conflictslot {
+        position: absolute;
+        left: -50px;
+        background: red;
+        border-radius: 5px;
+        z-index: 5;
+        color: white;
+        font-size: 12px;
+        height: 75px;
+        width: 100px;
+       
+    }
+
+    .conflictslot2 {
+        position: absolute;
+        background: red;
+        left: 20px;
+        border-radius: 5px;
+        z-index: 5;
+        color: white;
+        font-size: 12px;
+        height: 75px;
+        width: 100px;
+    }
+
+    .bigconflictslot {
+        position: absolute;
+        left: -50px;
+        background: red;
+        border-radius: 5px;
+        z-index: 5;
+        color: white;
+        font-size: 12px;
+        height: 175px;
+        width: 100px;
+    }
+
+    .bigconflictslot2 {
+        position: absolute;
+        background: red;
+        border-radius: 5px;
+        z-index: 5;
+        left: 20px;
+        color: white;
+        font-size: 12px;
+        height: 175px;
+        width: 100px;
+    }
+
+ 
     .event-container {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
@@ -130,13 +364,39 @@
         grid-area: main;
         position: relative;
     }
- 
+
     .slot-1 {
-        height: 75px;
-        grid-row: 5;
+
+
         grid-column: 2;
-        width: 100px;
+
+    }
+
+    .slot-2 {
+
+
+        grid-column: 3;
+
+    }
+
+    .slot-3 {
+
+ 
+        grid-column: 4;
+  
+    }
+
+    .slot-4 {
+
+
+        grid-column: 5;
+
+    }
+
+    .slot-5 {
+        
+        grid-column: 6;
+
     }
 
 </style>
-

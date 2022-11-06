@@ -16,7 +16,7 @@ namespace HCI_Project.Pages
         {
             _context = context;
         }
-        public async void OnGet()
+        public async Task OnGet()
         {
             cart = SessionHelper.GetObjectFromJson<List<Section>>(HttpContext.Session, "cart");
             var classes = from m in _context.Takeableclasses select m;
